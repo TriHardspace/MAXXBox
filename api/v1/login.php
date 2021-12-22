@@ -18,7 +18,7 @@ echo returnobj;
 die();
 }
 else {
-$preparestring2 = pg_prepare($conn, 'query2', 'SELECT password, salt, token FROM users where email = $1')
+$preparestring2 = pg_prepare($conn, 'query2', 'SELECT password, salt, token FROM users where email = $1');
 $result2 = pg_execute($conn, 'query2', array($email));
 $passwordhash = pg_fetch_result($conn, 0, 0);
 $salt = pg_fetch_result($conn, 0, 1);
