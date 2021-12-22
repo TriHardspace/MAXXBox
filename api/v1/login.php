@@ -30,4 +30,5 @@ print($password);
 else {
 
 print("Password either too long or too short.");
+}
 ?>
