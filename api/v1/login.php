@@ -1,5 +1,7 @@
 <?php
 
+if (strlen($password) >= 8 && (strlen($) {
+
 
 function getSalt($n) {
     $characters = "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
@@ -18,6 +20,14 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $salt = getSalt(strlen($password));
 $password .= $salt;
+
+$password = hash("sha256", $password);
 print($password);
 
+
+}
+
+else {
+
+print("Password either too long or too short.");
 ?>
