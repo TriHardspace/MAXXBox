@@ -33,10 +33,10 @@ echo $returnobj;
 
 }
 else {
-returnobj = new \stdClass();
-returnobj->success = "false";
-returnobj->reason = "incorrect_password";
-returnobj = json_encode($returnobj);
+$returnobj = new \stdClass();
+$returnobj->success = "false";
+$returnobj->reason = "incorrect_password";
+$returnobj = json_encode($returnobj);
 echo returnobj;
 }
 
