@@ -1,4 +1,4 @@
-
+<?php
 
 
 function getSalt($n) {
@@ -20,3 +20,4 @@ $salt = getSalt(strlen($password);)
 $password .= $salt;
 print($password);
 
+?>
