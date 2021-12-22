@@ -1,5 +1,5 @@
 <?php
-
+print(getenv('CONNECT_STRING'));
 $email = $_POST['email'];
 $password = $_POST['password'];
 
