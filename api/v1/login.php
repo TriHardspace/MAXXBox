@@ -27,18 +27,18 @@ $token = getSalt(64);
 $pguser = getenv("POSTGRES_USER");
 $pgpassword = getenv("POSTGRES_PASSWORD");
 $dbname = getenv("POSTGRES_DB");
-$connectstring = getenv('CONNECT_STRING');
-$conn = pg_connect($connectstring);
-$result = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email = $email");
-if (in_array($email, $result) == True) {
-print("You are already registered");
-die();
-}
-else {
-print("unfinished");
+// $connectstring = getenv('CONNECT_STRING');
+// $conn = pg_connect($connectstring);
+// $result = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email = $email");
+// if (in_array($email, $result) == True) {
+// print("You are already registered");
+// die();
+// }
+/ else {
+// print("unfinished");
 // THIS PART NEEDS TO BE WORKED ON STILL //
 
-}
+// }
 
 }
 
