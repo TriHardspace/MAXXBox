@@ -3,7 +3,7 @@
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-if (strlen($password) < 24) { 
+ 
 if (strlen($password) > 7) {
 
 
@@ -33,10 +33,5 @@ else {
 print("Password too short.");
 }
 
-}
-
-else {
-print("Password too long")
-}
 
 ?>
