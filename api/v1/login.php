@@ -24,7 +24,7 @@ $password .= $salt;
 $password = hash("sha256", $password);
 print("password hash successful\n");
 $token = getSalt(64);
-$connectstring = getenv('CONNECT_STRING');
+$connectstring = getenv('testvar');
 print($connectstring . "\n");
 // $conn = pg_connect($connectstring);
 // $result = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email = $email");
