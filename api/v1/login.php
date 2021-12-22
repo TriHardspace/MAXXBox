@@ -1,6 +1,6 @@
 <?php
 
-if (strlen($password) >= 8 | strlen($password) <= 25) {
+if (strlen($password) >= 8 || strlen($password) <= 25) {
 
 
 function getSalt($n) {
