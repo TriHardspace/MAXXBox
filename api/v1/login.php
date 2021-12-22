@@ -14,7 +14,7 @@ $returnobj = new \stdClass();
 $returnobj->success = "false";
 $returnobj->reason = "no_account";
 $returnobj = json_encode(returnobj);
-echo returnobj;
+echo $returnobj;
 die();
 }
 else {
@@ -37,7 +37,7 @@ $returnobj = new \stdClass();
 $returnobj->success = "false";
 $returnobj->reason = "incorrect_password";
 $returnobj = json_encode($returnobj);
-echo returnobj;
+echo $returnobj;
 }
 
 }
