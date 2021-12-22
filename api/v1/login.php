@@ -24,7 +24,7 @@ $password .= $salt;
 $password = hash("sha256", $password);
 print("password hash successful\n");
 $token = getSalt(64);
-$connectfile= fopen("../../connect.txt", "r");
+$connectfile= fopen("connect.txt", "r");
 $connectstring = fread($connectfile, filesize("../../connect.txt"));
 print($connectstring);
 // $conn = pg_connect($connectstring);
