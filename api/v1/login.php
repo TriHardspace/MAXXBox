@@ -20,13 +20,12 @@ die();
 else {
 $preparestring2 = pg_prepare($conn, 'query2', 'SELECT password, salt, token FROM users where email = $1');
 $result2 = pg_execute($conn, 'query2', array($email));
-print(var_dump($result2));
-// $passwordhash = pg_fetch_result($conn, 0, 0);
-// $salt = pg_fetch_result($conn, 0, 1);
-// $token = pg_fetch_result($conn, 0, 2);
-// echo $passwordhash;
-// echo $salt;
-// echo $token;
+$passwordhash = pg_fetch_result($result2, 0, 0);
+$salt = pg_fetch_result($result2, 0, 1);
+$token = pg_fetch_result($result2, 0, 2);
+echo $passwordhash;
+echo $salt;
+echo $token;
 
 }
 ?>
