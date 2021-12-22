@@ -1,11 +1,10 @@
 <?php
-print(getenv('CONNECT_STRING'));
+
 $email = $_POST['email'];
 $password = $_POST['password'];
-
+if (strlen($password) < 7) {
  
-if (strlen($password) > 7) {
-
+print("yes");
 
 function getSalt($n) {
     $characters = "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
