@@ -1,6 +1,7 @@
 <?php
 
-if (strlen($password) >= 8 || strlen($password) <= 25) {
+if (strelen($password) =< 25) { 
+if (strlen($password) >= 8) {
 
 
 function getSalt($n) {
@@ -28,7 +29,13 @@ print($password);
 }
 
 else {
-
-print("Password either too long or too short.");
+print("Password too short.");
 }
+
+}
+
+else {
+print("Password too long")
+}
+
 ?>
