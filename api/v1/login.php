@@ -19,10 +19,8 @@ function getSalt($n) {
 
 
 $salt = getSalt(strlen($password));
-print("getSalt successful\n");
 $password .= $salt;
 $password = hash("sha256", $password);
-print("password hash successful\n");
 $token = getSalt(64);
 $connectfile= fopen("connect.txt", "r");
 $connectstring = fread($connectfile, filesize("connect.txt"));
@@ -31,7 +29,9 @@ $querystring = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email=
 $result = pg_execute($conn, "query1", array($email));
 $numrows = pg_numrows($result);
 if ($numrows != 0) {
-print("Already registered");
+$returnobj->success = "false";
+$returnobj->reason = "duplicate_account";
+$returnobj = json_encode($returnobj);
 die();
 }
 else {
