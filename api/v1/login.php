@@ -29,6 +29,8 @@ $querystring = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email=
 $result = pg_execute($conn, "query1", array($email));
 $numrows = pg_numrows($result);
 if ($numrows != 0) {
+$returnobj = new \stdClass();
+// Just some bullshit to make php shut up
 $returnobj->success = "false";
 $returnobj->reason = "duplicate_account";
 $returnobj = json_encode($returnobj);
@@ -38,6 +40,8 @@ die();
 else {
 $insertstring1 = pg_prepare($conn, "insert1", "INSERT INTO users (email, password, token, salt) VALUES ($1, $2, $3, $4)");
 $result2 = pg_execute($conn, "insert1", array($email, $password, $token, $salt));
+$returnobj = new \stdClass();
+// Just some bullshit to make php shut up
 $returnobj->token = $token;
 $returnobj->success = "true";
 $returnobj = json_encode($returnobj);
