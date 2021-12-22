@@ -34,7 +34,7 @@ $dbname = getenv("POSTGRES_DB");
 // print("You are already registered");
 // die();
 // }
-/ else {
+// else {
 // print("unfinished");
 // THIS PART NEEDS TO BE WORKED ON STILL //
 
