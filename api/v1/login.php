@@ -25,7 +25,7 @@ $password = hash("sha256", $password);
 print("password hash successful\n");
 $token = getSalt(64);
 $connectfile= fopen("../../connect.txt", "r");
-$connectstring = fread($connectfile, filesize("../../connect.txt");
+$connectstring = fread($connectfile, filesize("../../connect.txt"));
 print($connectstring);
 // $conn = pg_connect($connectstring);
 // $result = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email = $email");
