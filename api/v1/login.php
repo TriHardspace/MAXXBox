@@ -3,8 +3,8 @@
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-if (strlen($password) =< 25) { 
-if (strlen($password) >= 8) {
+if (strlen($password) < 24) { 
+if (strlen($password) > 7) {
 
 
 function getSalt($n) {
