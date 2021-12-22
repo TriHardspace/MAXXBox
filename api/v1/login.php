@@ -24,7 +24,9 @@ $passwordhash = pg_fetch_result($result2, 0, 0);
 $salt = pg_fetch_result($result2, 0, 1);
 $token = pg_fetch_result($result2, 0, 2);
 echo $passwordhash;
+echo "\n";
 echo $salt;
+echo "\n";
 echo $token;
 
 }
