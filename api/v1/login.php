@@ -13,7 +13,7 @@ if ($numrows != 1) {
 $returnobj = new \stdClass();
 $returnobj->success = "false";
 $returnobj->reason = "no_account";
-$returnobj = json_encode(returnobj);
+$returnobj = json_encode($returnobj);
 echo $returnobj;
 die();
 }
