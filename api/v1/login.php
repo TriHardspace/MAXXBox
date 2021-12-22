@@ -1,11 +1,13 @@
 <?php
 
+//getting user info from POST
 $email = $_POST['email'];
 $password = $_POST['password'];
 if (strlen($password) > 7) {
- 
+//test to see if user's password is somewhat safe (failsafe)
 
 function getSalt($n) {
+    // Generates a random string the length of the given integer
     $characters = "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
     $randomString = '';
     for ($i = 0; $i < $n; $i++) {
@@ -21,9 +23,12 @@ function getSalt($n) {
 $salt = getSalt(strlen($password));
 $password .= $salt;
 $password = hash("sha256", $password);
+// Hashing and salting the password
 $token = getSalt(64);
-$connectfile= fopen("connect.txt", "r");
-$connectstring = fread($connectfile, filesize("connect.txt"));
+// Generating the user login token
+$connectfile = fopen("/var/www/nonpublic/connect.txt", "r");
+// Getting db connect string from file on 
+$connectstring = fread($connectfile, filesize("/var/www/nonpublic/connect.txt"));
 $conn = pg_connect($connectstring);
 $querystring = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email=$1");
 $result = pg_execute($conn, "query1", array($email));
