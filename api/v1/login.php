@@ -32,6 +32,7 @@ if ($numrows != 0) {
 $returnobj->success = "false";
 $returnobj->reason = "duplicate_account";
 $returnobj = json_encode($returnobj);
+echo $returnobj;
 die();
 }
 else {
