@@ -4,7 +4,6 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 if (strlen($password) > 7) {
  
-print("yes");
 
 function getSalt($n) {
     $characters = "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
@@ -20,8 +19,10 @@ function getSalt($n) {
 
 
 $salt = getSalt(strlen($password));
+print("getSalt successful");
 $password .= $salt;
 $password = hash("sha256", $password);
+print("password hash successful");
 $token = getSalt(64);
 $connectstring = getenv('CONNECT_STRING');
 print($connectstring);
