@@ -29,7 +29,7 @@ $pgpassword = getenv("POSTGRES_PASSWORD");
 $dbname = getenv("POSTGRES_DB");
 $connectstring = getenv('CONNECT_STRING');
 $conn = pg_connect($connectstring);
-$result = pg_prepare($conn, "query1", "SELECT * FROM USERS WHERE email = $email");
+$result = pg_prepare($conn, "query1", "SELECT password FROM USERS WHERE email = $email");
 print($result);
 
 }
