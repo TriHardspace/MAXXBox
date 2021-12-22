@@ -28,8 +28,8 @@ $connectfile= fopen("connect.txt", "r");
 $connectstring = fread($connectfile, filesize("connect.txt"));
 $conn = pg_connect($connectstring);
 $result = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email='$email'");
-
-print($result[0]);
+$arr = pg_fetch_array($result, 0, PGSQL_NUM);
+print($arr[0]);
 // if (in_array($email, $result) == True) {
 // print("You are already registered");
 // die();
