@@ -27,16 +27,16 @@ $token = getSalt(64);
 $connectfile= fopen("connect.txt", "r");
 $connectstring = fread($connectfile, filesize("connect.txt"));
 $conn = pg_connect($connectstring);
-$result = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email='$email'");
-print(pg_fetch_result($result, 1, 0));
-// if (in_array($email, $result) == True) {
-// print("You are already registered");
-// die();
-// }
-// else {
-// print("unfinished");
-// UNFINISHED //
-//}
+$querystring = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email=$1");
+$result = pg_execute($conn, "query1", array($email));
+$numrows = pg_numrows($result);
+if ($numrows != 0) {
+print("Already registered");
+die();
+}
+else {
+insertstring1 = pg_prepare($conn, "insert1", "INSERT INTO users (email, password, token, salt) VALUES ($email, $password, $token, $salt)");
+}
 
 }
 
