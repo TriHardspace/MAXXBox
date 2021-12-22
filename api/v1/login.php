@@ -20,14 +20,26 @@ die();
 else {
 $preparestring2 = pg_prepare($conn, 'query2', 'SELECT password, salt, token FROM users where email = $1');
 $result2 = pg_execute($conn, 'query2', array($email));
-$passwordhash = pg_fetch_result($result2, 0, 0);
+$dbpw = pg_fetch_result($result2, 0, 0);
 $salt = pg_fetch_result($result2, 0, 1);
 $token = pg_fetch_result($result2, 0, 2);
-echo $passwordhash;
-echo "\n";
-echo $salt;
-echo "\n";
-echo $token;
+$passwordhash = $password . $salt;
+if (hash("sha256", $passwordhash) == $dbpw ) {
+$returnobj = new \stdClass();
+$returnobj->success = "true";
+$returnobj->token = $token;
+$returnobj = json_encode($returnobj);
+echo $returnobj;
 
 }
+else {
+returnobj = new \stdClass();
+returnobj->success = "false";
+returnobj->reason = "incorrect_password";
+returnobj = json_encode($returnobj);
+echo returnobj;
+}
+
+}
+
 ?>
