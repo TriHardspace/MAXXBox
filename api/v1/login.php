@@ -1,5 +1,7 @@
 <?php
 
+$username = $_POST['username'];
+$password = $_POST['password'];
 if (strelen($password) =< 25) { 
 if (strlen($password) >= 8) {
 
@@ -17,8 +19,6 @@ function getSalt($n) {
 };
 
 
-$username = $_POST['username'];
-$password = $_POST['password'];
 $salt = getSalt(strlen($password));
 $password .= $salt;
 
