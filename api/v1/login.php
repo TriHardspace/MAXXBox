@@ -14,24 +14,31 @@ function getSalt($n) {
         $index = rand(0, strlen($characters) - 1);
         $randomString .= $characters[$index];
 
- 				}
+}
 
     return $randomString;
-		     };
+};
 
 
 $salt = getSalt(strlen($password));
 $password .= $salt;
-
 $password = hash("sha256", $password);
-print($password);
-				}
+$token = getSalt(64);
+$pguser = getenv("POSTGRES_USER");
+$pgpassword = getenv("POSTGRES_PASSWORD");
+$dbname = getenv("POSTGRES_DB");
+$connectstring = getenv('CONNECT_STRING');
+$conn = pg_connect($connectstring);
+$result = pg_prepare($conn, "query1", "SELECT * FROM USERS WHERE email = $email");
+print($result);
+
+}
 
 
 
 else {
 print("Password too short.");
-     }
+}
 
 
 ?>
