@@ -3,7 +3,7 @@
 //getting user info from POST
 $email = $_POST['email'];
 $password = $_POST['password'];
-$email = htmlspecialchars('email');
+$email = htmlspecialchars($email);
 
 if (strlen($password) > 7) {
 //test to see if user's password is somewhat safe (failsafe)
