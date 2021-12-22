@@ -30,7 +30,7 @@ $connectfile = fopen("/var/www/nonpublic/connect.txt", "r");
 // Getting db connect string from file on 
 $connectstring = fread($connectfile, filesize("/var/www/nonpublic/connect.txt"));
 $conn = pg_connect($connectstring);
-$querystring = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email=$1");
+$querystring = pg_prepare($conn, "query1", "SELECT email FROM users WHERE email=$1");
 $result = pg_execute($conn, "query1", array($email));
 $numrows = pg_numrows($result);
 if ($numrows != 0) {
