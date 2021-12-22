@@ -16,7 +16,7 @@ function getSalt($n) {
 
 $username = $_POST['email'];
 $password = $_POST['password'];
-$salt = getSalt(strlen($password);)
+$salt = getSalt(strlen($password))
 $password .= $salt;
 print($password);
 
