@@ -36,7 +36,8 @@ die();
 }
 else {
 $insertstring1 = pg_prepare($conn, "insert1", "INSERT INTO users (email, password, token, salt) VALUES ($1, $2, $3, $4)");
-$result2 = pg_execute($conn, "insert1", array($email), array($password), array($token), array($salt));
+$result2 = pg_execute($conn, "insert1", array($email, $password, $token, $salt));
+print(pg_fetch_result($result2, 0, 1));
 }
 
 }
