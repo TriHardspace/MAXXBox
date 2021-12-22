@@ -1,6 +1,6 @@
 <?php
 $email = $_POST['email'];
-$password = $_POST['email'];
+$password = $_POST['password'];
 
 $connectfile = fopen("/var/www/nonpublic/connect.txt", "r");
 // Getting db connect string from file on 
@@ -24,9 +24,9 @@ $dbpw = pg_fetch_result($result2, 0, 0);
 $salt = pg_fetch_result($result2, 0, 1);
 $token = pg_fetch_result($result2, 0, 2);
 $passwordhash = $password . $salt;
-print($passwordhash . "\n");
 
 $passwordhash = hash("sha256", $passwordhash);
+
 if ($passwordhash == $dbpw ) {
 $returnobj = new \stdClass();
 $returnobj->success = "true";
