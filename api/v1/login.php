@@ -22,7 +22,6 @@ $salt = getSalt(strlen($password));
 print("getSalt successful\n");
 $password .= $salt;
 $password = hash("sha256", $password);
-system(whoami);
 print("password hash successful\n");
 $token = getSalt(64);
 $connectstring = getenv('testvar');
