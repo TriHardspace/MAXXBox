@@ -27,7 +27,7 @@ $token = getSalt(64);
 $connectfile= fopen("connect.txt", "r");
 $connectstring = fread($connectfile, filesize("connect.txt"));
 $conn = pg_connect($connectstring);
-$result = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email = $email");
+$result = pg_prepare($conn, "query1", "SELECT email FROM USERS WHERE email='$email'");
 if (in_array($email, $result) == True) {
 print("You are already registered");
 die();
