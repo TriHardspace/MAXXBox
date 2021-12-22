@@ -33,7 +33,7 @@ $conn = pg_connect($connectstring);
 $querystring = pg_prepare($conn, "query1", "SELECT email FROM users WHERE email=$1");
 $result = pg_execute($conn, "query1", array($email));
 $numrows = pg_numrows($result);
-if ($numrows !== 0) {
+if ($numrows < 1) {
 $returnobj = new \stdClass();
 // Just some bullshit to make php shut up
 $returnobj->success = "false";
