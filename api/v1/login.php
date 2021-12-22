@@ -2,7 +2,7 @@
 
 $email = $_POST['email'];
 $password = $_POST['password'];
-if (strlen($password) < 7) {
+if (strlen($password) > 7) {
  
 print("yes");
 
