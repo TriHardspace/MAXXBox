@@ -14,10 +14,10 @@ function getSalt($n) {
         $index = rand(0, strlen($characters) - 1);
         $randomString .= $characters[$index];
 
-    }
+ 				}
 
     return $randomString;
-};
+		     };
 
 
 $salt = getSalt(strlen($password));
@@ -25,13 +25,13 @@ $password .= $salt;
 
 $password = hash("sha256", $password);
 print($password);
+				}
 
 
-}
 
 else {
 print("Password too short.");
-}
+     }
 
 
 ?>
