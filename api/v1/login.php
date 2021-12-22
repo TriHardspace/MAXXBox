@@ -24,7 +24,10 @@ $dbpw = pg_fetch_result($result2, 0, 0);
 $salt = pg_fetch_result($result2, 0, 1);
 $token = pg_fetch_result($result2, 0, 2);
 $passwordhash = $password . $salt;
-if (hash("sha256", $passwordhash) == $dbpw ) {
+print($passwordhash . "\n");
+
+$passwordhash = hash("sha256", $passwordhash);
+if ($passwordhash == $dbpw ) {
 $returnobj = new \stdClass();
 $returnobj->success = "true";
 $returnobj->token = $token;
