@@ -1,6 +1,5 @@
 <?php
 
-$total = $_POST['total'];
 $token = $_POST['token'];
 $connectfile = fopen("/var/www/nonpublic/connect.txt", "r");
 $connectstring = fread($connectfile, filesize("/var/www/nonpublic/connect.txt"));
