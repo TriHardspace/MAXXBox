@@ -12,6 +12,7 @@ $returnobj = new \stdClass();
 $returnobj->success = "false";
 $returnobj->reason = "invalid_token";
 $returnobj = json_encode($returnobj);
+print($returnobj);
 die();
 }
 
