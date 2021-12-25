@@ -46,7 +46,7 @@ die();
 }
 else {
 $insertstring1 = pg_prepare($conn, "insert1", "INSERT INTO users (email, password, token, salt, creation_date) VALUES ($1, $2, $3, $4, $5)");
-$date = date("yyyy/mm/dd")
+$date = date("yyyy/mm/dd");
 $result2 = pg_execute($conn, "insert1", array($email, $password, $token, $salt, $date));
 $returnobj = new \stdClass();
 // Just some bullshit to make php shut up
