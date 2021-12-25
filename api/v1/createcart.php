@@ -5,7 +5,7 @@ $connectfile = fopen("/var/www/nonpublic/connect.txt", "r");
 $connectstring = fread($connectfile, filesize("/var/www/nonpublic/connect.txt"));
 $conn = pg_connect($connectstring);
 $email = pg_prepare($conn, 'query1', 'SELECT email FROM users WHERE token = $1');
-$email = pg_execute($conn, 'query1', array($token))
+$email = pg_execute($conn, 'query1', array($token));
 $numrows = pg_numrows($email);
 if ($numrows != 1) {
 $returnobj = new \stdClass();
