@@ -17,6 +17,17 @@ die();
 }
 
 else {
+$existsquerystring = pg_prepare($conn, 'existsquery', 'SELECT email FROM cart WHERE email=$1');
+$existsquery = pg_execute($conn, 'existsquery', array($email));
+$numrows = pg_fetch_rows($existsquery);
+if ($numrows != 0) {
+$returnobj = new \stdClass();
+$returnobj->success = "false";
+$returnobj->reason = "cart_already_exists";
+$returnobj = json_encode($returnobj);
+print($returnobj);
+}
+else {
 $returnobj = new \stdClass();
 $returnobj->success = "true";
 $returnobj->total = "0.00";
@@ -28,5 +39,6 @@ $quertystring2 = pg_prepare($conn, 'query2', "INSERT INTO cart (email, total, he
 $executeem2 = pg_execute($conn, 'query2', array($email, $total, $zero, $zero, $zero));
 $returnobj = json_encode($returnobj);
 print($returnobj);
+}
 }
 ?>
