@@ -1,4 +1,5 @@
 <?php
+$connectfile = fopen("/var/www/nonpublic/connect.txt", "r");
 $hetzner_starter = $_POST['hetzner_starter'];
 $hetzner_plus = $_POST['hetzner_plus'];
 $hetzner_advanced = $_POST['hetzner_advanced'];
