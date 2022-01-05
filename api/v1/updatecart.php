@@ -14,13 +14,23 @@ if (numrows != 1) {
 $returnobj = new \stdClass();
 $returnobj->success = "false";
 $returnobj->reason = "invalid_token";
+die();
 else {
 $hetzner_starter_total = $hetzner_starter * prices[0];
 $hetzner_plus_total = $hetzner_plus * prices[1];
 $hetzner_advanced_total = $hetzher_advanced * prices[2];
+$subtotal = $hetzner_starter_total + $hetzner_plus_total + $hetzner_advanced_total;
+$total = $subtotal * 1.0625;
 $email = pg_fetch_result($result1, 0, 0);
-$preparestring2 = pg_prepare($conn, 'update1', 'UPDATE cart SET (hetzner_starter, hetzner_plus, hetzner_advanced, total, subtotal) = ($1, $2, $3) WHERE email = $4');
-$result2 = pg_execute($conn, 'update1', array());
+$preparestring2 = pg_prepare($conn, 'update1', 'UPDATE cart SET (hetzner_starter, hetzner_plus, hetzner_advanced, total, subtotal) = ($1, $2, $3, $4, $5) WHERE email = $6');
+$result2 = pg_execute($conn, 'update1', array($hetzner_starter, $hetzner_plus, $hetzner_advanced, $total, $subtotal));
+$returnobj = new \stdClass();
+$returnobj->success = "true";
+$returnobj->total = $total;
+$returnobj->subtotal = $subtotal;
+$returnobj = json_encode($returnobj);
+print($returnobj);
+die();
 }
 
 }
