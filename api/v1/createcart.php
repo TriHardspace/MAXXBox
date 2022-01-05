@@ -18,7 +18,7 @@ die();
 
 else {
 $email = pg_fetch_result($executeem, 0, 0);
-$quertystring2 = pg_prepare($conn, 'query2', "INSERT INTO users (email) VALUES $1");
+$quertystring2 = pg_prepare($conn, 'query2', "INSERT INTO users (email) VALUES ($1)");
 $executeem2 = pg_execute($conn, 'query2', array($email));
 
 }
