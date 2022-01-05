@@ -21,7 +21,7 @@ else {
 $email = pg_fetch_result($executeem, 0, 0);
 $existsquerystring = pg_prepare($conn, 'existsquery', 'SELECT email FROM cart WHERE email=$1');
 $existsquery = pg_execute($conn, 'existsquery', array($email));
-$numrows = pg_fetch_rows($existsquery);
+$numrows = pg_numrows($existsquery);
 if ($numrows != 0) {
 $returnobj = new \stdClass();
 $returnobj->success = "false";
