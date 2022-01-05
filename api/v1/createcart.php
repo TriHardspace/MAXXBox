@@ -17,7 +17,7 @@ die();
 }
 
 else {
-$email = pg_fetch_row($executeem, 0, 0);
+$email = pg_fetch_result($executeem, 0, 0);
 print($email);
 }
 ?>
