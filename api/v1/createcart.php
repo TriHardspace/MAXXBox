@@ -20,10 +20,12 @@ else {
 $returnobj = new \stdClass();
 $returnobj->success = "true";
 $returnobj->total = "0.00";
-$total = "0.00";
+$total = 0.00;
+$zero = 0;
+// lol I'm lazy as fuck
 $email = pg_fetch_result($executeem, 0, 0);
-$quertystring2 = pg_prepare($conn, 'query2', "INSERT INTO cart (email, total) VALUES ($1, $2)");
-$executeem2 = pg_execute($conn, 'query2', array($email, $total));
+$quertystring2 = pg_prepare($conn, 'query2', "INSERT INTO cart (email, total, hetzner_starter, hetzner_plus, hetzner_advanced) VALUES ($1, $2, $3, $4, $5)");
+$executeem2 = pg_execute($conn, 'query2', array($email, $total, $zero, $zero, $zero));
 $returnobj = json_encode($returnobj);
 print($returnobj);
 }
