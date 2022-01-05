@@ -11,7 +11,7 @@ $conn = pg_connect($connectstring);
 $preparestring1 = pg_prepare($conn, 'query1', 'SELECT email FROM users WHERE token=$1');
 $result1 = pg_execute($conn, 'query1', array($token));
 $numrows = pg_numrows($result1);
-if (numrows != 1) {
+if ($numrows != 1) {
 $returnobj = new \stdClass();
 $returnobj->success = "false";
 $returnobj->reason = "invalid_token";
