@@ -7,9 +7,6 @@ $conn = pg_connect($connectstring);
 $querystring = pg_prepare($conn, 'query1', 'SELECT email FROM users WHERE token = $1');
 $executeem = pg_execute($conn, 'query1', array($token));
 $numrows = pg_numrows($executeem);
-/* This shit is returning weird errors and i'm to tired to 
-deal with it, I'll see tmrw, check it in the mean time
-*/
 if ($numrows != 1) {
 $returnobj = new \stdClass();
 $returnobj->success = "false";
@@ -20,8 +17,8 @@ die();
 }
 
 else {
-$email = pg_fetch_row($executeem, 0, 0);
-print($email);
-
+// $email = pg_fetch_row($executeem, 0, 0);
+// print($email);
+print(gettype($executem));
 }
 ?>
