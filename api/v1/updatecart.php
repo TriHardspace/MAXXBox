@@ -15,6 +15,7 @@ $returnobj = new \stdClass();
 $returnobj->success = "false";
 $returnobj->reason = "invalid_token";
 die();
+}
 else {
 $hetzner_starter_total = $hetzner_starter * prices[0];
 $hetzner_plus_total = $hetzner_plus * prices[1];
