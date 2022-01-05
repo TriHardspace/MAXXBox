@@ -18,9 +18,9 @@ $returnobj->reason = "invalid_token";
 die();
 }
 else {
-$hetzner_starter_total = $hetzner_starter * prices[0];
-$hetzner_plus_total = $hetzner_plus * prices[1];
-$hetzner_advanced_total = $hetzher_advanced * prices[2];
+$hetzner_starter_total = $hetzner_starter * $prices[0];
+$hetzner_plus_total = $hetzner_plus * $prices[1];
+$hetzner_advanced_total = $hetzher_advanced * $prices[2];
 $subtotal = $hetzner_starter_total + $hetzner_plus_total + $hetzner_advanced_total;
 $total = $subtotal * 1.0625;
 $email = pg_fetch_result($result1, 0, 0);
