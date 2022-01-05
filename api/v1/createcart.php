@@ -17,9 +17,9 @@ die();
 }
 
 else {
-returnobj = new \stdClass();
-returnobj->success = "true";
-returnobj->total = "0.00";
+$returnobj = new \stdClass();
+$returnobj->success = "true";
+$returnobj->total = "0.00";
 $total = "0.00";
 $email = pg_fetch_result($executeem, 0, 0);
 $quertystring2 = pg_prepare($conn, 'query2', "INSERT INTO users (email, total) VALUES ($1, $2)");
