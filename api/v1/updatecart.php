@@ -1,8 +1,8 @@
 <?php
 $connectfile = fopen("/var/www/nonpublic/connect.txt", "r");
-$hetzner_starter = $_POST['hetzner_starter'];
-$hetzner_plus = $_POST['hetzner_plus'];
-$hetzner_advanced = $_POST['hetzner_advanced'];
+$hetzner_starter = intval($_POST['hetzner_starter']);
+$hetzner_plus = intval($_POST['hetzner_plus']);
+$hetzner_advanced = intval($_POST['hetzner_advanced']);
 $token = $_POST['token'];
 $prices = array(9.69, 17.69, 27.69);
 // first is starter, second is plus, third is advanced 
@@ -18,20 +18,20 @@ $returnobj->reason = "invalid_token";
 die();
 }
 else {
-$hetzner_starter_total = intval($hetzner_starter * $prices[0]);
-$hetzner_plus_total = intval($hetzner_plus * $prices[1]);
-$hetzner_advanced_total = intval($hetzher_advanced * $prices[2]);
-$subtotal = intval($hetzner_starter_total + $hetzner_plus_total + $hetzner_advanced_total);
+$hetzner_starter_total = $hetzner_starter * $prices[0];
+$hetzner_plus_total = $hetzner_plus * $prices[1];
+$hetzner_advanced_total $hetzher_advanced * $prices[2];
+$subtotal = $hetzner_starter_total + $hetzner_plus_total + $hetzner_advanced_total;
 $total = $subtotal * 1.0625;
 $email = pg_fetch_result($result1, 0, 0);
 $preparestring2 = pg_prepare($conn, 'update1', 'UPDATE cart SET (hetzner_starter, hetzner_plus, hetzner_advanced, total, subtotal) = ($1, $2, $3, $4, $5) WHERE email = $6');
-$result2 = pg_execute($conn, 'update1', array($hetzner_starter, $hetzner_plus, $hetzner_advanced, $total, $subtotal));
+$result2 = pg_execute($conn, 'update1', array($hetzner_starter, $hetzner_plus, $hetzner_advanced, $total, $subtotal, $email));
 $returnobj = new \stdClass();
 $returnobj->success = "true";
 $returnobj->total = $total;
 $returnobj->subtotal = $subtotal;
 $returnobj = json_encode($returnobj);
-printval($returnobj);
+print($returnobj);
 die();
 }
 
