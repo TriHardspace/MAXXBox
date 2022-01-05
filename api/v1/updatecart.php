@@ -18,10 +18,10 @@ $returnobj->reason = "invalid_token";
 die();
 }
 else {
-$hetzner_starter_total = $hetzner_starter * $prices[0];
-$hetzner_plus_total = $hetzner_plus * $prices[1];
-$hetzner_advanced_total = $hetzher_advanced * $prices[2];
-$subtotal = $hetzner_starter_total + $hetzner_plus_total + $hetzner_advanced_total;
+$hetzner_starter_total = int($hetzner_starter * $prices[0]);
+$hetzner_plus_total = int($hetzner_plus * $prices[1]);
+$hetzner_advanced_total = int($hetzher_advanced * $prices[2]);
+$subtotal = int($hetzner_starter_total + $hetzner_plus_total + $hetzner_advanced_total);
 $total = $subtotal * 1.0625;
 $email = pg_fetch_result($result1, 0, 0);
 $preparestring2 = pg_prepare($conn, 'update1', 'UPDATE cart SET (hetzner_starter, hetzner_plus, hetzner_advanced, total, subtotal) = ($1, $2, $3, $4, $5) WHERE email = $6');
