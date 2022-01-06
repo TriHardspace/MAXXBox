@@ -15,7 +15,7 @@ $returnobj->reason = "invalid_token";
 $print($returnobj);
 }
 else {
-preparestring2 = pg_prepare($conn, 'query2', 'SELECT (total, subtotal, hetzner_starter, hetzner_plus, hetzner_advanced) FROM cart WHERE email=$1');
+$preparestring2 = pg_prepare($conn, 'query2', 'SELECT (total, subtotal, hetzner_starter, hetzner_plus, hetzner_advanced) FROM cart WHERE email=$1');
 $returnobj = new \stdClass();
 $returnobj->total = pg_fetch_result('query2', 0, 0);
 $returnobj->subtotal = pg_fetch_result('query2', 0, 1);
