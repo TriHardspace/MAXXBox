@@ -16,12 +16,13 @@ $print($returnobj);
 }
 else {
 $preparestring2 = pg_prepare($conn, 'query2', 'SELECT (total, subtotal, hetzner_starter, hetzner_plus, hetzner_advanced) FROM cart WHERE email=$1');
+$query2 = pg_execute($conn, 'query2', array($email));
 $returnobj = new \stdClass();
-$returnobj->total = pg_fetch_result('query2', 0, 0);
-$returnobj->subtotal = pg_fetch_result('query2', 0, 1);
-$returnobj->hetzner_basic = pg_fetch_result('query2', 0, 2);
-$returnobj->hetzner_plus = pg_fetch_result('query2', 0, 3);
-$returnobj->hetzner_advanced = pg_fetch_result('query2', 0, 4);
+$returnobj->total = pg_fetch_result($query2, 0, 0);
+$returnobj->subtotal = pg_fetch_result($query2, 0, 1);
+$returnobj->hetzner_basic = pg_fetch_result($query2, 0, 2);
+$returnobj->hetzner_plus = pg_fetch_result($query2, 0, 3);
+$returnobj->hetzner_advanced = pg_fetch_result($query2, 0, 4);
 $returnobj = json_encode($returnobj);
 print($returnobj);
 die();
