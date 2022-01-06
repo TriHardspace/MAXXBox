@@ -8,7 +8,7 @@ $preparestring1 = pg_prepare($conn, 'query1', 'SELECT email FROM users where tok
 $query1 = pg_execute($conn, 'query1', array($token));
 $numrows = pg_numrows($query1);
 
-if ($numrows != 1)) {
+if ($numrows != 1) {
 $returnobj = new \stdClass();
 $returnobj->success = "false";
 $returnobj->reason = "invalid_token";
